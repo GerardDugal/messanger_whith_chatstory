@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messenger</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+
+        p {
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Выберите чат</h1>
+
+    <form id="chatForm">
+        <label for="chatSelect">Выберите чат:</label>
+        <select id="chatSelect" name="chats">
+            <option value="none">Выберите чат</option>
+
+            {% for chat_id, chat_data in messages.items() %}
+                <option value="{{ chat_id }}">{{chat_id}}</option>
+            {% endfor %}
+        </select>
+    </form>
+ <script>
+        var select = document.getElementById("chatSelect");
+
+        select.addEventListener('change', function() {
+            var selectedChat = select.value;
+            window.location.href = selectedChat;
+              });
+    </script>
+</body>
+</html>
